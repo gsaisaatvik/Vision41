@@ -7,33 +7,25 @@
     <link rel="stylesheet" href="../static/css/dashboard.css">
 </head>
 <body>
-    <header class="dashboard-header" aria-label="Dashboard Header">
-        <div class="header-content">
-            <h1>Smart Insurance Advisor</h1>
-            <p>Transforming Data into Decisions</p>
-        </div>
+    <header class="dashboard-header">
+        <h1>Smart Insurance Advisor</h1>
+        <p>Transforming Data into Decisions</p>
     </header>
-
-    <main class="dashboard-grid" aria-label="Main Dashboard">
-        <!-- Past Claims Section -->
-        <section class="card" aria-label="Past Claims Overview">
+    <main class="dashboard-grid">
+        <section class="card">
             <h2>Past Claims Overview</h2>
             <div class="chart-placeholder">
                 <p>Graph of Claims History (Placeholder)</p>
             </div>
         </section>
-
-        <!-- Policy Insights Section -->
-        <section class="card" aria-label="Policy Insights">
+        <section class="card">
             <h2>Policy Insights</h2>
             <ul>
                 <li>Upgrade health insurance for better critical illness coverage.</li>
                 <li>Recommended: Comprehensive vehicle insurance.</li>
             </ul>
         </section>
-
-        <!-- Risk Analysis Section -->
-        <section class="card" aria-label="Risk Analysis">
+        <section class="card">
             <h2>Risk Analysis</h2>
             <p>Your risk profile: <strong>Moderate</strong></p>
             <p>Suggestions to reduce risk:</p>
@@ -42,29 +34,17 @@
                 <li>Consider term plans for dependents.</li>
             </ul>
         </section>
-
-        <!-- Actions Section -->
-        <section class="card action-card" aria-label="User Actions">
+        <section class="card action-card">
             <h2>Actions</h2>
-            <div class="button-group">
-                <button onclick="redirectToForm()">Fill Insurance Form</button>
-                <button onclick="exploreRecommendations()">Explore Recommendations</button>
-            </div>
+            <button id="insuranceFormButton">Fill Insurance Form</button>
+            <button>Explore Recommendations</button>
         </section>
     </main>
-
-    <footer class="dashboard-footer" aria-label="Dashboard Footer">
-        <p>© 2042 Ganesh Insurance AI Advisor</p>
-    </footer>
-
     <script>
-        function redirectToForm() {
-            window.location.href = "form.html";
-        }
-
-        function exploreRecommendations() {
-            alert('Feature coming soon!');
-        }
+        document.getElementById('insuranceFormButton').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = "form";
+        });
     </script>
 </body>
 </html>
