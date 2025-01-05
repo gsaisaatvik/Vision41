@@ -3,21 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Smart Insurance Advisor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login to Smart Insurance Advisor</h1>
-        <form action="/dashboard" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
+    <div class="container">
+        <div class="form-container">
+            <form id="loginForm" class="form" action="{{ url_for('login') }}" method="POST">
+                <h2>Login</h2>
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" placeholder="Enter your email" required>
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter your password" required>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+            </form>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-
-            <button type="submit">Login</button>
-        </form>
+            <form id="registerForm" class="form hidden">
+                <h2>Register</h2>
+                <label for="register-name">Name</label>
+                <input type="text" id="register-name" placeholder="Enter your name" required>
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" placeholder="Enter your email" required>
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" placeholder="Enter your password" required>
+                <button type="submit">Register</button>
+                <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+            </form>
+        </div>
     </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+        });
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            window.location.href = "dashboard.html";
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Registration successful! Please login.');
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>

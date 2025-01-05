@@ -1,48 +1,101 @@
+/* General Styles */
 body {
-    background-color: #f4f6f9;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
-.dashboard-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #ffffff;
+header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+/* Premium Calculator Section */
+#premium {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px; /* Added padding for better layout */
+}
+
+.dashboard-iframe {
+    width: 90%; /* Reduced width */
+    height: 300px; /* Reduced height */
+    border: none;
+    margin: 0 auto; /* Centered the iframe */
+}
+
+/* Claims Overview Section */
+#claims {
+    text-align: center;
+}
+
+.chart-placeholder {
+    height: 250px; /* Reduced height for better visibility of charts */
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-h1 {
+/* Navbar Styles */
+.navbar-brand {
+    font-size: 1.8rem; /* Increased navbar brand size */
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #007bff;
+    border: none;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    border: none;
+}
+
+/* Actions Section */
+#actions {
+    margin-top: 50px;
     text-align: center;
-    color: #333;
 }
 
-.dashboard-stats {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.dashboard-stats p {
-    font-size: 18px;
-    color: #007bff;
-}
-
-.btn {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 12px;
-    text-align: center;
+#actions .action-button {
+    font-size: 16px; /* Slightly smaller button size */
+    padding: 12px 25px; /* Adjusted padding */
+    margin: 20px 0;
     background-color: #007bff;
     color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
 }
 
-.btn:hover {
+#actions .action-button:hover {
     background-color: #0056b3;
+}
+
+/* Notifications Section */
+#notifications {
+    margin-top: 50px;
+}
+
+/* Health Scoring Section */
+#scoreSystem {
+    margin-top: 50px;
+}
+
+/* Reduce the chart size for Smoking, Health, and BMI Charts */
+canvas {
+    max-width: 100% !important;
+    max-height: 200px; /* Reduced max height for all charts */
+    margin: 0 auto;
 }

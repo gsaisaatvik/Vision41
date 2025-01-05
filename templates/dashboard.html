@@ -3,16 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Smart Insurance Advisor</title>
+    <title>Smart Insurance Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/dashboard.css">
 </head>
 <body>
-    <div class="dashboard-container">
-        <h1>Welcome to Your Dashboard</h1>
-        <div class="dashboard-stats">
-            <p><strong>Data Insights</strong></p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Smart Insurance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#premium">Premium Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#claims">Claims Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#insights">Policy Insights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#actions">Actions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+                </ul>
+            </div>
         </div>
-        <a href="/form" class="btn">Fill Form</a>
-    </div>
+    </nav>
+
+    <header class="text-center bg-primary text-white py-5">
+        <h1>Smart Insurance Advisor</h1>
+        <p>Empowering you with data-driven decisions.</p>
+    </header>
+
+    <section id="actions" class="dashboard-section text-center mb-5">
+        <h2>Actions</h2>
+        <button id="insuranceFormButton" class="btn btn-primary btn-lg mb-3">Fill Insurance Form</button>
+        <button class="btn btn-secondary btn-lg">Explore Recommendations</button>
+    </section>
+
+    <section id="premium" class="mb-5">
+        <h2 class="mb-4">Premium Calculator</h2>
+        <iframe src="calculate_premium.php" class="dashboard-iframe" width="1100" height="600"></iframe>
+    </section>
+
+    <section id="claims" class="mb-5">
+        <h2 class="mb-4">Claims Overview</h2>
+        <div class="premium-display">
+            <h3>Your Calculated Premium: <span id="premiumValue" class="display-premium">$500</span></h3>
+        </div>
+    </section>
+
+    <section id="insights" class="mb-5">
+        <h2 class="mb-4">Policy Insights</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">Health Insurance</h5>
+                        <p class="card-text">By exercising 3 times a week, you can improve your health and potentially lower your insurance premium by up to 15%.</p>
+                        <p class="card-text"><strong>Potential Savings:</strong> $200 annually.</p>
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">Quit Smoking</h5>
+                        <p class="card-text">By quitting smoking, you could save on healthcare costs and reduce your insurance premium.</p>
+                        <p class="card-text"><strong>Potential Savings:</strong> $350 annually.</p>
+                        <canvas id="smokingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="notifications" class="mt-5">
+        <h3>Notifications</h3>
+        <ul id="notificationList" class="list-group">
+        </ul>
+    </section>
+
+    <section id="scoreSystem" class="mt-5">
+        <h3>Health Score</h3>
+        <p>Your current health score is: <span id="healthScore">85</span>/100</p>
+        <canvas id="healthScoreChart"></canvas>
+    </section>
+
+    <footer class="text-center bg-dark text-white py-3 mt-4">
+        <p></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const ctxHealth = document.getElementById('healthChart').getContext('2d');
+        new Chart(ctxHealth, {
+            type: 'pie',
+            data: {
+                labels: ['Savings from Health Improvement', 'Normal Premium'],
+                datasets: [{
+                    label: 'Impact of Exercising',
+                    data: [200, 800],
+                    backgroundColor: ['#28a745', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        const ctxSmoking = document.getElementById('smokingChart').getContext('2d');
+        new Chart(ctxSmoking, {
+            type: 'pie',
+            data: {
+                labels: ['Savings from Quitting Smoking', 'Normal Premium'],
+                datasets: [{
+                    label: 'Impact of Quitting Smoking',
+                    data: [350, 650],
+                    backgroundColor: ['#28a745', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        const ctxHealthScore = document.getElementById('healthScoreChart').getContext('2d');
+        new Chart(ctxHealthScore, {
+            type: 'radar',
+            data: {
+                labels: ['Exercise', 'Diet', 'BMI', 'Smoking', 'Stress'],
+                datasets: [{
+                    label: 'Health Score',
+                    data: [80, 70, 85, 50, 60],
+                    backgroundColor: 'rgba(28, 167, 75, 0.3)',
+                    borderColor: '#1ca74b',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                responsive: true
+            }
+        });
+
+        function updatePremium(value) {
+            document.getElementById('premiumValue').innerText = '$' + value;
+        }
+
+        const notificationList = document.getElementById('notificationList');
+        const notifications = [
+            "Exercise regularly to lower your premium.",
+            "Consider quitting smoking to save on premiums.",
+            "Fill out the insurance form to get personalized quotes."
+        ];
+
+        notifications.forEach(notification => {
+            const li = document.createElement('li');
+            li.classList.add('list-group-item');
+            li.textContent = notification;
+            notificationList.appendChild(li);
+        });
+
+        updatePremium(1200);
+
+        document.getElementById('insuranceFormButton').addEventListener('click', () => {
+            window.location.href = "form.html";
+        });
+    </script>
 </body>
 </html>

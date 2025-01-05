@@ -1,55 +1,130 @@
-body {
-    background-color: #e0f7fa;
-    font-family: Arial, sans-serif;
+/* General Styles */
+body, h1, h2, p {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.form-container {
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #000428, #004e92); /* Space-themed gradient */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
     width: 100%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
 }
 
 h1 {
-    text-align: center;
-    color: #00796b;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-form {
+/* Form Styles */
+.main-container {
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.form-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 90%;
+}
+
+h2 {
+    font-size: 28px; /* Increased font size for a larger heading */
+    margin-bottom: 20px; /* Adjusted margin for better spacing */
+    text-align: center;
+    color: #f2f2f2;
+}
+
+p {
+    font-size: 18px; /* Increased font size for better readability */
+    margin-bottom: 30px; /* Adjusted margin for better spacing */
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 30px; /* Increased margin for better separation */
 }
 
 label {
-    font-size: 16px;
-    margin-bottom: 6px;
-    color: #00796b;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px; /* Increased spacing between label and input */
+    color: #f0f0f0;
+    font-size: 1.2rem; /* Increased label font size */
 }
 
-input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #00796b;
-    font-size: 16px;
-}
-
-button {
-    background-color: #00796b;
-    color: white;
-    padding: 12px;
+input, textarea, select {
+    width: 100%;
+    padding: 15px; /* Increased padding for better comfort */
+    border-radius: 10px; /* Larger radius for more rounded corners */
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1.1rem; /* Slightly larger font size for better readability */
+    background: rgba(255, 255, 255, 0.8);
 }
 
-button:hover {
-    background-color: #004d40;
+textarea {
+    resize: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid #007bff;
+    background: #ffffff;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px; /* Larger padding for a bigger button */
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem; /* Increased font size for better readability */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Styles */
+footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
 }
